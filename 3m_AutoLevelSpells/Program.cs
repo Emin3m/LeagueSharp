@@ -14,6 +14,7 @@ namespace AutoLevelSpell
         public static int[] def_seq = new int[18];
         public static Boolean first = true;
         public static double offset = 45;
+        private static SpellSlot Smite;
         private static void Main(string[] args)
         {
             CustomEvents.Game.OnGameLoad += Game_OnGameLoad;
@@ -70,13 +71,12 @@ namespace AutoLevelSpell
             Game.PrintChat("[00:00] <font color='#C80046'>You have " + offset + " seconds time to change your settings for this champion after the AutoLevelSpell starts working!</font>");
             Game.PrintChat("[00:00] <font color='#C80046'>Note: 1 = Q - 2 = W - 3 = E - 4 = R. Wrong or impossible sequences are not catched!!!</font>");
             Game.OnGameProcessPacket += Game_OnGameProcessPacket;
-            
+            Smite = ObjectManager.Player.GetSpellSlot("SummonerSmite");
         }
 
         private static void Game_OnGameProcessPacket(EventArgs args)
         {
             TimeSpan time = TimeSpan.FromSeconds(Game.ClockTime);
-
             if (time.TotalSeconds > offset && first)
             {
                 first = false;
