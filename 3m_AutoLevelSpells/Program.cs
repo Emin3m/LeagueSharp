@@ -1,12 +1,9 @@
-﻿#region
-
-using System;
+﻿using System;
 using LeagueSharp;
 using LeagueSharp.Common;
 using SharpDX;
 using System.Drawing;
 
-#endregion
 
 namespace AutoLevelSpell
 {
