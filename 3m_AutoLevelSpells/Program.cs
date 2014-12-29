@@ -27,6 +27,7 @@ namespace AutoLevelSpell
 
         private static void Game_OnGameLoad(EventArgs args)
         {
+            livellini();
             def_seq = GetSequence();
             var champion = Player.BaseSkinName+tipo;
 
