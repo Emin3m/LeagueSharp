@@ -1,4 +1,28 @@
-﻿using System;
+﻿#region LICENSE
+/*
+    Copyright 2014 - 2014 Emin3m
+    3m_AutoLevelSpells is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+    3m_AutoLevelSpells is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+    GNU General Public License for more details.
+    You should have received a copy of the GNU General Public License
+    along with LeagueSharp.Common. If not, see <http://www.gnu.org/licenses/>.
+*/
+#endregion
+
+#region CREDITS
+/*
+    This assembly was created because my favorite AutoLevelSpell-Tool dint work after L# beta december 2014. 
+    Thnk you DarkAzazel for your good work on the original assembly. I just added the possibility to turn 
+    it on/off ingame or change the sequence to the users personal wishes.
+*/
+#endregion
+
+using System;
 using LeagueSharp;
 using LeagueSharp.Common;
 using SharpDX;
