@@ -27,7 +27,7 @@ namespace AutoLevelSpell
 
         private static void Game_OnGameLoad(EventArgs args)
         {
-            def_seq = abilitySequence;
+            def_seq = GetSequence();
             var champion = Player.BaseSkinName+tipo;
 
             Menu = new Menu("LevelUp by Emin3m", "Emin3m`s AutoLevel", true);
