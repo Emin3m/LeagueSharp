@@ -72,6 +72,7 @@ namespace AutoLevelSpell
             Game.PrintChat("[00:00] <font color='#C80046'>Note: 1 = Q - 2 = W - 3 = E - 4 = R. Wrong or impossible sequences are not catched!!!</font>");
             Game.OnGameProcessPacket += Game_OnGameProcessPacket;
             Smite = ObjectManager.Player.GetSpellSlot("SummonerSmite");
+            Game.PrintChat("[00:00]" + Smite);
         }
 
         private static void Game_OnGameProcessPacket(EventArgs args)
