@@ -17,7 +17,7 @@
 #region CREDITS
 /*
     This assembly was created because my favorite AutoLevelSpell-Tool dint work after L# beta december 2014. 
-    Thnk you DarkAzazel for your good work on the original assembly. I just added the possibility to turn 
+    Thank you DarkAzazel for your good work on the original assembly. I just added the possibility to turn 
     it on/off ingame or change the sequence to the users personal wishes.
 */
 #endregion
