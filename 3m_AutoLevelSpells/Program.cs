@@ -3,7 +3,6 @@ using LeagueSharp;
 using LeagueSharp.Common;
 using SharpDX;
 using System.Drawing;
-using System.Threading;
 using System.Linq;
 
 namespace AutoLevelSpell
@@ -23,8 +22,6 @@ namespace AutoLevelSpell
 
         private static void Main(string[] args)
         {
-            Thread t = new Thread(new ThreadStart(livellini));
-            t.Start();
             CustomEvents.Game.OnGameLoad += Game_OnGameLoad;
         }
 
@@ -219,7 +216,6 @@ namespace AutoLevelSpell
 
         public static void livellini()
         {
-            Thread.Sleep(100);
             Smite = ObjectManager.Player.GetSpellSlot("SummonerSmite");
             if (Player.BaseSkinName == "Aatrox") abilitySequence = new int[] { 2, 1, 3, 2, 2, 4, 2, 3, 2, 3, 4, 3, 3, 1, 1, 4, 1, 1 };
             else if (Player.BaseSkinName == "Ahri") abilitySequence = new int[] { 1, 2, 3, 1, 1, 4, 1, 2, 1, 2, 4, 2, 2, 3, 3, 4, 3, 3 };
