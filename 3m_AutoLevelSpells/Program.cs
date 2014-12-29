@@ -209,7 +209,7 @@ namespace AutoLevelSpell
             AutoLevel.Enabled(false);
             var level = new AutoLevel(seq);
             if (!first) AutoLevel.Enabled(Menu.Item(champion + "Enabled").GetValue<bool>());
-            if (num == 0) Game.PrintChat("[00:" + offset + "] <font color='#C80046'>AutoLevelUp Spells sequence " + champion + "loaded and starting now...</font>");            
+            if (num == 0) Game.PrintChat("[00:" + offset + "] <font color='#C80046'>AutoLevelUp Spells sequence " + champion + " yloaded and starting now...</font>");            
         }
 
         public static void livellini()
