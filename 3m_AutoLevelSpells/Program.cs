@@ -118,7 +118,17 @@ namespace AutoLevelSpell
 
         private static void Drawing_OnDraw(EventArgs args)
         {
-            Drawing.DrawText(50, 10, System.Drawing.Color.White, "<h1>Sample Text</h1> " + ObjectManager.Player.Level);
+            int qL = Player.Spellbook.GetSpell(SpellSlot.Q).Level;
+            int wL = Player.Spellbook.GetSpell(SpellSlot.W).Level;
+            int eL = Player.Spellbook.GetSpell(SpellSlot.E).Level;
+            int rL = Player.Spellbook.GetSpell(SpellSlot.R).Level;
+            int sL = qL + wL + eL + rL;
+            if (sL > 1 && first)
+            {
+                first = false;
+                changeSeq(0);
+            } 
+            else Drawing.DrawText(50, 10, System.Drawing.Color.White, "Sample Text " + sL);
             
         }
 
