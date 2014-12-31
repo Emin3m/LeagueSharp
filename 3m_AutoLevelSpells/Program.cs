@@ -52,6 +52,7 @@ namespace AutoLevelSpell
         private static void Main(string[] args)
         {
             CustomEvents.Game.OnGameLoad += Game_OnGameLoad;
+            Drawing.OnDraw += Drawing_OnDraw;
         }
 
         private static void Game_OnGameLoad(EventArgs args)
@@ -106,7 +107,7 @@ namespace AutoLevelSpell
             Game.PrintChat("[00:00] <font color='#C80046'>Note: 1 = Q - 2 = W - 3 = E - 4 = R.</font>");
             Game.PrintChat("[00:00] <font color='#C80046'>Note: Wrong or impossible sequences are not catched!!!</font>");
             Game.OnGameProcessPacket += Game_OnGameProcessPacket;
-            Drawing.OnDraw += Drawing_OnDraw;
+            
         }
 
         private static void Game_OnGameProcessPacket(EventArgs args)
