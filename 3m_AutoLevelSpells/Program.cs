@@ -113,10 +113,11 @@ namespace AutoLevelSpell
             if (Menu.Item(champion + "Level1").GetValue<Slider>().Value == 2) firstlevel = "your W at ";
             if (Menu.Item(champion + "Level1").GetValue<Slider>().Value == 3) firstlevel = "your E at ";
             if (Menu.Item(champion + "Level1").GetValue<Slider>().Value == 4) firstlevel = "your R at ";
-            if (sL == 0) Drawing.OnDraw += Drawing_OnDraw;
+            Drawing.OnDraw += Drawing_OnDraw;
             if (sL > 0 && first)
             {
                 Drawing.OnDraw -= Drawing_OnDraw;
+
                 changeSeq(0);
                 first = false;
             }
@@ -124,7 +125,7 @@ namespace AutoLevelSpell
 
         private static void Drawing_OnDraw(EventArgs args)
         {
-            Drawing.DrawText(250, 10, System.Drawing.Color.White, "Please skill " + firstlevel + "Level 1 for your own.");
+            if (sL == 0) Drawing.DrawText(250, 10, System.Drawing.Color.White, "Please skill " + firstlevel + "Level 1 for your own."+sL);
         }
 
         private static void Enabled_ValueChanged(object sender, OnValueChangeEventArgs e)
