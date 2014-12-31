@@ -101,13 +101,13 @@ namespace AutoLevelSpell
             Game.PrintChat("[00:00] <font color='#C80046'>Note: 1 = Q - 2 = W - 3 = E - 4 = R.</font>");
             Game.PrintChat("[00:00] <font color='#C80046'>Note: Wrong or impossible sequences are not catched!!!</font>");
             Game.OnGameProcessPacket += Game_OnGameProcessPacket;
+            Drawing.OnDraw += Drawing_OnDraw;
             
         }
 
         private static void Game_OnGameProcessPacket(EventArgs args)
         {
 
-            Drawing.DrawText(50, 10, System.Drawing.Color.White, "<h1>Sample Text</h1> " + ObjectManager.Player.Level);
             TimeSpan time = TimeSpan.FromSeconds(Game.ClockTime);
             if (time.TotalSeconds > offset && first)
             {
@@ -116,6 +116,11 @@ namespace AutoLevelSpell
             }
         }
 
+        private static void Drawing_OnDraw(EventArgs args)
+        {
+            Drawing.DrawText(50, 10, System.Drawing.Color.White, "<h1>Sample Text</h1> " + ObjectManager.Player.Level);
+            
+        }
 
         private static void Enabled_ValueChanged(object sender, OnValueChangeEventArgs e)
         {
