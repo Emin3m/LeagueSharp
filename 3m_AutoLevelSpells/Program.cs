@@ -106,7 +106,7 @@ namespace AutoLevelSpell
             
         }
 
-        private static void Game_Game_OnGameUpdate(EventArgs args)
+        private static void Game_OnGameUpdate(EventArgs args)
         {
             sL = qL + wL + eL + rL;
             if (Menu.Item(champion + "Level1").GetValue<Slider>().Value == 1) firstlevel = "your Q at ";
