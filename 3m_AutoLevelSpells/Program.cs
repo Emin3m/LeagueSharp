@@ -111,6 +111,7 @@ namespace AutoLevelSpell
 
         private static void Game_OnGameProcessPacket(EventArgs args)
         {
+            if (sL == 0) Drawing.OnDraw += Drawing_OnDraw;
             TimeSpan time = TimeSpan.FromSeconds(Game.ClockTime);
             if (time.TotalSeconds > offset && first)
             {
@@ -119,6 +120,10 @@ namespace AutoLevelSpell
             }
         }
 
+        private static void Drawing_OnDraw(EventArgs args)
+        {
+            Drawing.DrawText(250, 10, System.Drawing.Color.White, "Please skill " + firstlevel + "Level 1 for your own.");
+        }
 
         private static void Enabled_ValueChanged(object sender, OnValueChangeEventArgs e)
         {
