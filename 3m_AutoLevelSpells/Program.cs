@@ -120,11 +120,7 @@ namespace AutoLevelSpell
             }
         }
 
-        private static void Drawing_OnDraw(EventArgs args)
-        {
-            Drawing.DrawText(250, 10, System.Drawing.Color.White, "Please skill " + firstlevel + "Level 1 for your own.");
-        }
-
+        
         private static void Enabled_ValueChanged(object sender, OnValueChangeEventArgs e)
         {
             AutoLevel.Enabled(e.GetNewValue<bool>());         
