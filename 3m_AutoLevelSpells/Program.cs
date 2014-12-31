@@ -34,20 +34,21 @@ namespace AutoLevelSpell
     internal class Program
     {
         public static Menu Menu;
-        public static int qOff = 0, wOff = 0, eOff = 0, rOff = 0;
-        public static int[] seq = new int[18];
-        public static int[] abilitySequence;
-        private static SpellSlot Smite;
-        public static string tipo = "";
-        public static Obj_AI_Base Player = ObjectManager.Player;
-        public static string champion = "";
         public static int qL = Player.Spellbook.GetSpell(SpellSlot.Q).Level;
         public static int wL = Player.Spellbook.GetSpell(SpellSlot.W).Level;
         public static int eL = Player.Spellbook.GetSpell(SpellSlot.E).Level;
         public static int rL = Player.Spellbook.GetSpell(SpellSlot.R).Level;
-        public static int sL = 0;
+        public static int sL = 0, qOff = 0, wOff = 0, eOff = 0, rOff = 0;
+        public static int[] seq = new int[18];
+        public static int[] abilitySequence;
+        private static SpellSlot Smite;
+        public static Obj_AI_Base Player = ObjectManager.Player;
+        public static String tipo = "";
+        public static String champion = "";
         public static String firstlevel = "";
-
+        public static Boolean first = true;
+        
+        
         private static void Main(string[] args)
         {
             CustomEvents.Game.OnGameLoad += Game_OnGameLoad;
@@ -101,20 +102,28 @@ namespace AutoLevelSpell
             Menu.AddToMainMenu();
             seq = new[] { Menu.Item(champion + "Level1").GetValue<Slider>().Value, Menu.Item(champion + "Level2").GetValue<Slider>().Value, Menu.Item(champion + "Level3").GetValue<Slider>().Value, Menu.Item(champion + "Level4").GetValue<Slider>().Value, Menu.Item(champion + "Level5").GetValue<Slider>().Value, Menu.Item(champion + "Level6").GetValue<Slider>().Value, Menu.Item(champion + "Level7").GetValue<Slider>().Value, Menu.Item(champion + "Level8").GetValue<Slider>().Value, Menu.Item(champion + "Level9").GetValue<Slider>().Value, Menu.Item(champion + "Level10").GetValue<Slider>().Value, Menu.Item(champion + "Level11").GetValue<Slider>().Value, Menu.Item(champion + "Level12").GetValue<Slider>().Value, Menu.Item(champion + "Level13").GetValue<Slider>().Value, Menu.Item(champion + "Level14").GetValue<Slider>().Value, Menu.Item(champion + "Level15").GetValue<Slider>().Value, Menu.Item(champion + "Level16").GetValue<Slider>().Value, Menu.Item(champion + "Level17").GetValue<Slider>().Value, Menu.Item(champion + "Level18").GetValue<Slider>().Value };
             Game.PrintChat("[00:00] <font color='#C80046'>AutoLevelSpells by Emin3m loaded...</font>");
-            Drawing.OnDraw += Drawing_OnDraw;
+            Game.OnGameProcessPacket += Game_OnGameProcessPacket;
             
         }
 
-        private static void Drawing_OnDraw(EventArgs args)
+        private static void Game_OnGameProcessPacket (EventArgs args)
         {
             sL = qL + wL + eL + rL;
             if (Menu.Item(champion + "Level1").GetValue<Slider>().Value == 1) firstlevel = "your Q at ";
             if (Menu.Item(champion + "Level1").GetValue<Slider>().Value == 2) firstlevel = "your W at ";
             if (Menu.Item(champion + "Level1").GetValue<Slider>().Value == 3) firstlevel = "your E at ";
             if (Menu.Item(champion + "Level1").GetValue<Slider>().Value == 4) firstlevel = "your R at ";
+            if (sL == 0) Drawing.OnDraw += Drawing_OnDraw;
+            if (sL > 0 && first)
+            {
+                changeSeq(0);
+                first = false;
+            }
+        }
 
-            if (sL == 0) Drawing.DrawText(250, 10, System.Drawing.Color.White, "Please skill " + firstlevel + "Level 1 for your own.");
-            else changeSeq(0);
+        private static void Drawing_OnDraw(EventArgs args)
+        {
+           Drawing.DrawText(250, 10, System.Drawing.Color.White, "Please skill " + firstlevel + "Level 1 for your own.");     
         }
 
         private static void Enabled_ValueChanged(object sender, OnValueChangeEventArgs e)
