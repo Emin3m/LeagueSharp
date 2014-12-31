@@ -111,7 +111,6 @@ namespace AutoLevelSpell
 
         private static void Game_OnGameProcessPacket(EventArgs args)
         {
-            
             TimeSpan time = TimeSpan.FromSeconds(Game.ClockTime);
             if (time.TotalSeconds > offset && first)
             {
@@ -120,7 +119,7 @@ namespace AutoLevelSpell
             }
         }
 
-        
+
         private static void Enabled_ValueChanged(object sender, OnValueChangeEventArgs e)
         {
             AutoLevel.Enabled(e.GetNewValue<bool>());         
