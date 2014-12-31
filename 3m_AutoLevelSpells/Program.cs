@@ -52,7 +52,7 @@ namespace AutoLevelSpell
         private static void Main(string[] args)
         {
             CustomEvents.Game.OnGameLoad += Game_OnGameLoad;
-            Drawing.OnDraw += Drawing_OnDraw;
+            //Drawing.OnDraw += Drawing_OnDraw;
         }
 
         private static void Game_OnGameLoad(EventArgs args)
