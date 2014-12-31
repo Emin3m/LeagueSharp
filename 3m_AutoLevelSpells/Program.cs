@@ -45,7 +45,7 @@ namespace AutoLevelSpell
         public static Obj_AI_Base Player = ObjectManager.Player;
         public static string tipo = "";
         public static string champion = "";
-        public static string firstlevel = "";
+        public static string firstlevel = ""; 
         public static Boolean first = true;
         
         
