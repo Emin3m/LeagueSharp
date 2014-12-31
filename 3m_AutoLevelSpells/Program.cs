@@ -37,8 +37,6 @@ namespace AutoLevelSpell
         public static int qOff = 0, wOff = 0, eOff = 0, rOff = 0;
         public static int[] seq = new int[18];
         public static int[] abilitySequence;
-        public static Boolean first = true;
-        public static double offset = 45;
         private static SpellSlot Smite;
         public static string tipo = "";
         public static Obj_AI_Base Player = ObjectManager.Player;
@@ -115,7 +113,7 @@ namespace AutoLevelSpell
             if (Menu.Item(champion + "Level1").GetValue<Slider>().Value == 3) firstlevel = "your E at ";
             if (Menu.Item(champion + "Level1").GetValue<Slider>().Value == 4) firstlevel = "your R at ";
 
-            if (sL == 0) Drawing.DrawText(50, 10, System.Drawing.Color.White, "Please skill " + firstlevel + "Level 1 for your own.");
+            if (sL == 0) Drawing.DrawText(250, 10, System.Drawing.Color.White, "Please skill " + firstlevel + "Level 1 for your own.");
             else changeSeq(0);
         }
 
@@ -127,116 +125,116 @@ namespace AutoLevelSpell
         private static void Level1_ValueChanged(object sender, OnValueChangeEventArgs e)
         {
             seq[0] = e.GetNewValue<Slider>().Value;
-            changeSeq(1);
+            if (sL > 0) changeSeq(1);
         }
 
         private static void Level2_ValueChanged(object sender, OnValueChangeEventArgs e)
         {
             seq[1] = e.GetNewValue<Slider>().Value;
-            changeSeq(2);
+            if (sL > 0) changeSeq(2);
         }
 
         private static void Level3_ValueChanged(object sender, OnValueChangeEventArgs e)
         {
             seq[2] = e.GetNewValue<Slider>().Value;
-            changeSeq(3);
+            if (sL > 0) changeSeq(3);
         }
 
         private static void Level4_ValueChanged(object sender, OnValueChangeEventArgs e)
         {
             seq[3] = e.GetNewValue<Slider>().Value;
-            changeSeq(4);
+            if (sL > 0) changeSeq(4);
         }
 
         private static void Level5_ValueChanged(object sender, OnValueChangeEventArgs e)
         {
             seq[4] = e.GetNewValue<Slider>().Value;
-            changeSeq(5);
+            if (sL > 0) changeSeq(5);
         }
 
         private static void Level6_ValueChanged(object sender, OnValueChangeEventArgs e)
         {
             seq[5] = e.GetNewValue<Slider>().Value;
-            changeSeq(6);
+            if (sL > 0) changeSeq(6);
         }
 
         private static void Level7_ValueChanged(object sender, OnValueChangeEventArgs e)
         {
             seq[6] = e.GetNewValue<Slider>().Value;
-            changeSeq(7);
+            if (sL > 0) changeSeq(7);
         }
 
         private static void Level8_ValueChanged(object sender, OnValueChangeEventArgs e)
         {
             seq[7] = e.GetNewValue<Slider>().Value;
-            changeSeq(8);
+            if (sL > 0) changeSeq(8);
         }
 
         private static void Level9_ValueChanged(object sender, OnValueChangeEventArgs e)
         {
             seq[8] = e.GetNewValue<Slider>().Value;
-            changeSeq(9);
+            if (sL > 0) changeSeq(9);
         }
 
         private static void Level10_ValueChanged(object sender, OnValueChangeEventArgs e)
         {
             seq[9] = e.GetNewValue<Slider>().Value;
-            changeSeq(10);
+            if (sL > 0) changeSeq(10);
         }
 
         private static void Level11_ValueChanged(object sender, OnValueChangeEventArgs e)
         {
             seq[10] = e.GetNewValue<Slider>().Value;
-            changeSeq(11);
+            if (sL > 0) changeSeq(11);
         }
 
         private static void Level12_ValueChanged(object sender, OnValueChangeEventArgs e)
         {
             seq[11] = e.GetNewValue<Slider>().Value;
-            changeSeq(12);
+            if (sL > 0) changeSeq(12);
         }
 
         private static void Level13_ValueChanged(object sender, OnValueChangeEventArgs e)
         {
             seq[12] = e.GetNewValue<Slider>().Value;
-            changeSeq(13);
+            if (sL > 0) changeSeq(13);
         }
 
         private static void Level14_ValueChanged(object sender, OnValueChangeEventArgs e)
         {
             seq[13] = e.GetNewValue<Slider>().Value;
-            changeSeq(14);
+            if (sL > 0) changeSeq(14);
         }
 
         private static void Level15_ValueChanged(object sender, OnValueChangeEventArgs e)
         {
             seq[14] = e.GetNewValue<Slider>().Value;
-            changeSeq(15);
+            if (sL > 0) changeSeq(15);
         }
 
         private static void Level16_ValueChanged(object sender, OnValueChangeEventArgs e)
         {
             seq[15] = e.GetNewValue<Slider>().Value;
-            changeSeq(16);
+            if (sL > 0) changeSeq(16);
         }
 
         private static void Level17_ValueChanged(object sender, OnValueChangeEventArgs e)
         {
             seq[16] = e.GetNewValue<Slider>().Value;
-            changeSeq(17);
+            if (sL > 0) changeSeq(17);
         }
 
         private static void Level18_ValueChanged(object sender, OnValueChangeEventArgs e)
         {
             seq[17] = e.GetNewValue<Slider>().Value;
-            changeSeq(18);
+            if (sL > 0) changeSeq(18);
         }
 
         private static void changeSeq(int num)
         {
             AutoLevel.Enabled(false);
             var level = new AutoLevel(seq);
-            if (!first) AutoLevel.Enabled(Menu.Item(champion + "Enabled").GetValue<bool>());
+            AutoLevel.Enabled(Menu.Item(champion + "Enabled").GetValue<bool>());
         }
 
         public static void livellini()
