@@ -130,7 +130,7 @@ namespace AutoLevelSpell
             if (sL > 1 && first)
             {
                 first = false;
-                //changeSeq(0);
+                changeSeq(0);
             }
             else Drawing.DrawText(50, 10, System.Drawing.Color.White, "Please skill your " + firstlevel + " at Level 1 for your own." + qL + wL + eL + rL + sL);
             
