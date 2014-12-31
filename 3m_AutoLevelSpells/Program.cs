@@ -116,6 +116,7 @@ namespace AutoLevelSpell
             if (sL == 0) Drawing.OnDraw += Drawing_OnDraw;
             if (sL > 0 && first)
             {
+                Drawing.OnDraw -= Drawing_OnDraw;
                 changeSeq(0);
                 first = false;
             }
