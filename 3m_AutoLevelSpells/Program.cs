@@ -123,9 +123,9 @@ namespace AutoLevelSpell
             String firstlevel = "";
 
             if(Menu.Item(champion + "Level1").GetValue<Slider>().Value == 1) firstlevel = "Q";
-            if(Menu.Item(champion + "Level1").GetValue<Slider>().Value == 1) firstlevel = "W";
-            if(Menu.Item(champion + "Level1").GetValue<Slider>().Value == 1) firstlevel = "E";
-            if(Menu.Item(champion + "Level1").GetValue<Slider>().Value == 1) firstlevel = "R";
+            if(Menu.Item(champion + "Level1").GetValue<Slider>().Value == 2) firstlevel = "W";
+            if(Menu.Item(champion + "Level1").GetValue<Slider>().Value == 3) firstlevel = "E";
+            if(Menu.Item(champion + "Level1").GetValue<Slider>().Value == 4) firstlevel = "R";
 
             if (sL > 1 && first)
             {
