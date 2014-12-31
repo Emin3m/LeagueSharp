@@ -34,21 +34,16 @@ namespace AutoLevelSpell
     internal class Program
     {
         public static Menu Menu;
-        public static int qL = Player.Spellbook.GetSpell(SpellSlot.Q).Level;
-        public static int wL = Player.Spellbook.GetSpell(SpellSlot.W).Level;
-        public static int eL = Player.Spellbook.GetSpell(SpellSlot.E).Level;
-        public static int rL = Player.Spellbook.GetSpell(SpellSlot.R).Level;
-        public static int sL = 0, qOff = 0, wOff = 0, eOff = 0, rOff = 0;
+        public static int qOff = 0, wOff = 0, eOff = 0, rOff = 0;
         public static int[] seq = new int[18];
         public static int[] abilitySequence;
-        private static SpellSlot Smite;
-        public static Obj_AI_Base Player = ObjectManager.Player;
-        public static string tipo = "";
-        public static string champion = "";
-        public static string firstlevel = ""; 
         public static Boolean first = true;
-        
-        
+        public static double offset = 45;
+        private static SpellSlot Smite;
+        public static string tipo = "";
+        public static Obj_AI_Base Player = ObjectManager.Player;
+        public static string champion = "";
+
         private static void Main(string[] args)
         {
             CustomEvents.Game.OnGameLoad += Game_OnGameLoad;
@@ -101,30 +96,24 @@ namespace AutoLevelSpell
             
             Menu.AddToMainMenu();
             seq = new[] { Menu.Item(champion + "Level1").GetValue<Slider>().Value, Menu.Item(champion + "Level2").GetValue<Slider>().Value, Menu.Item(champion + "Level3").GetValue<Slider>().Value, Menu.Item(champion + "Level4").GetValue<Slider>().Value, Menu.Item(champion + "Level5").GetValue<Slider>().Value, Menu.Item(champion + "Level6").GetValue<Slider>().Value, Menu.Item(champion + "Level7").GetValue<Slider>().Value, Menu.Item(champion + "Level8").GetValue<Slider>().Value, Menu.Item(champion + "Level9").GetValue<Slider>().Value, Menu.Item(champion + "Level10").GetValue<Slider>().Value, Menu.Item(champion + "Level11").GetValue<Slider>().Value, Menu.Item(champion + "Level12").GetValue<Slider>().Value, Menu.Item(champion + "Level13").GetValue<Slider>().Value, Menu.Item(champion + "Level14").GetValue<Slider>().Value, Menu.Item(champion + "Level15").GetValue<Slider>().Value, Menu.Item(champion + "Level16").GetValue<Slider>().Value, Menu.Item(champion + "Level17").GetValue<Slider>().Value, Menu.Item(champion + "Level18").GetValue<Slider>().Value };
-            Game.PrintChat("[00:00] <font color='#C80046'>AutoLevelSpells by Emin3m loaded...</font>");
+            Game.PrintChat("[00:00] <font color='#C80046'>AutoLevelUp Spells by Emin3m loaded...</font>");
+            Game.PrintChat("[00:00] <font color='#C80046'>You have " + offset + " seconds time to change your settings for " + champion + "!</font>");
+            Game.PrintChat("[00:00] <font color='#C80046'>Note: 1 = Q - 2 = W - 3 = E - 4 = R.</font>");
+            Game.PrintChat("[00:00] <font color='#C80046'>Note: Wrong or impossible sequences are not catched!!!</font>");
             Game.OnGameProcessPacket += Game_OnGameProcessPacket;
-            
+            Drawing.DrawText(10, 10, Drawing.Coloolor.AliceBlue, "lalalalala");
         }
 
         private static void Game_OnGameProcessPacket(EventArgs args)
         {
-            sL = qL + wL + eL + rL;
-            if (Menu.Item(champion + "Level1").GetValue<Slider>().Value == 1) firstlevel = "your Q at ";
-            if (Menu.Item(champion + "Level1").GetValue<Slider>().Value == 2) firstlevel = "your W at ";
-            if (Menu.Item(champion + "Level1").GetValue<Slider>().Value == 3) firstlevel = "your E at ";
-            if (Menu.Item(champion + "Level1").GetValue<Slider>().Value == 4) firstlevel = "your R at ";
-            if (sL == 0) Drawing.OnDraw += Drawing_OnDraw;
-            if (sL > 0 && first)
+            TimeSpan time = TimeSpan.FromSeconds(Game.ClockTime);
+            if (time.TotalSeconds > offset && first)
             {
+                first = false;           
                 changeSeq(0);
-                first = false;
             }
         }
 
-        private static void Drawing_OnDraw(EventArgs args)
-        {
-           Drawing.DrawText(250, 10, System.Drawing.Color.White, "Please skill " + firstlevel + "Level 1 for your own.");     
-        }
 
         private static void Enabled_ValueChanged(object sender, OnValueChangeEventArgs e)
         {
@@ -134,116 +123,117 @@ namespace AutoLevelSpell
         private static void Level1_ValueChanged(object sender, OnValueChangeEventArgs e)
         {
             seq[0] = e.GetNewValue<Slider>().Value;
-            if (sL > 0) changeSeq(1);
+            changeSeq(1);
         }
 
         private static void Level2_ValueChanged(object sender, OnValueChangeEventArgs e)
         {
             seq[1] = e.GetNewValue<Slider>().Value;
-            if (sL > 0) changeSeq(2);
+            changeSeq(2);
         }
 
         private static void Level3_ValueChanged(object sender, OnValueChangeEventArgs e)
         {
             seq[2] = e.GetNewValue<Slider>().Value;
-            if (sL > 0) changeSeq(3);
+            changeSeq(3);
         }
 
         private static void Level4_ValueChanged(object sender, OnValueChangeEventArgs e)
         {
             seq[3] = e.GetNewValue<Slider>().Value;
-            if (sL > 0) changeSeq(4);
+            changeSeq(4);
         }
 
         private static void Level5_ValueChanged(object sender, OnValueChangeEventArgs e)
         {
             seq[4] = e.GetNewValue<Slider>().Value;
-            if (sL > 0) changeSeq(5);
+            changeSeq(5);
         }
 
         private static void Level6_ValueChanged(object sender, OnValueChangeEventArgs e)
         {
             seq[5] = e.GetNewValue<Slider>().Value;
-            if (sL > 0) changeSeq(6);
+            changeSeq(6);
         }
 
         private static void Level7_ValueChanged(object sender, OnValueChangeEventArgs e)
         {
             seq[6] = e.GetNewValue<Slider>().Value;
-            if (sL > 0) changeSeq(7);
+            changeSeq(7);
         }
 
         private static void Level8_ValueChanged(object sender, OnValueChangeEventArgs e)
         {
             seq[7] = e.GetNewValue<Slider>().Value;
-            if (sL > 0) changeSeq(8);
+            changeSeq(8);
         }
 
         private static void Level9_ValueChanged(object sender, OnValueChangeEventArgs e)
         {
             seq[8] = e.GetNewValue<Slider>().Value;
-            if (sL > 0) changeSeq(9);
+            changeSeq(9);
         }
 
         private static void Level10_ValueChanged(object sender, OnValueChangeEventArgs e)
         {
             seq[9] = e.GetNewValue<Slider>().Value;
-            if (sL > 0) changeSeq(10);
+            changeSeq(10);
         }
 
         private static void Level11_ValueChanged(object sender, OnValueChangeEventArgs e)
         {
             seq[10] = e.GetNewValue<Slider>().Value;
-            if (sL > 0) changeSeq(11);
+            changeSeq(11);
         }
 
         private static void Level12_ValueChanged(object sender, OnValueChangeEventArgs e)
         {
             seq[11] = e.GetNewValue<Slider>().Value;
-            if (sL > 0) changeSeq(12);
+            changeSeq(12);
         }
 
         private static void Level13_ValueChanged(object sender, OnValueChangeEventArgs e)
         {
             seq[12] = e.GetNewValue<Slider>().Value;
-            if (sL > 0) changeSeq(13);
+            changeSeq(13);
         }
 
         private static void Level14_ValueChanged(object sender, OnValueChangeEventArgs e)
         {
             seq[13] = e.GetNewValue<Slider>().Value;
-            if (sL > 0) changeSeq(14);
+            changeSeq(14);
         }
 
         private static void Level15_ValueChanged(object sender, OnValueChangeEventArgs e)
         {
             seq[14] = e.GetNewValue<Slider>().Value;
-            if (sL > 0) changeSeq(15);
+            changeSeq(15);
         }
 
         private static void Level16_ValueChanged(object sender, OnValueChangeEventArgs e)
         {
             seq[15] = e.GetNewValue<Slider>().Value;
-            if (sL > 0) changeSeq(16);
+            changeSeq(16);
         }
 
         private static void Level17_ValueChanged(object sender, OnValueChangeEventArgs e)
         {
             seq[16] = e.GetNewValue<Slider>().Value;
-            if (sL > 0) changeSeq(17);
+            changeSeq(17);
         }
 
         private static void Level18_ValueChanged(object sender, OnValueChangeEventArgs e)
         {
             seq[17] = e.GetNewValue<Slider>().Value;
-            if (sL > 0) changeSeq(18);
+            changeSeq(18);
         }
 
         private static void changeSeq(int num)
         {
             AutoLevel.Enabled(false);
             var level = new AutoLevel(seq);
-            AutoLevel.Enabled(Menu.Item(champion + "Enabled").GetValue<bool>());
+            if (!first) AutoLevel.Enabled(Menu.Item(champion + "Enabled").GetValue<bool>());
+            if (num == 0) Game.PrintChat("[00:" + offset + "] <font color='#C80046'>AutoLevelUp Spells sequence " + champion + " yloaded and starting now...</font>");            
         }
 
         public static void livellini()
