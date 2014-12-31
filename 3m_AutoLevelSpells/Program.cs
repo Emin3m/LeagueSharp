@@ -132,7 +132,7 @@ namespace AutoLevelSpell
                 first = false;
                 changeSeq(0);
             }
-            else Drawing.DrawText(50, 10, System.Drawing.Color.White, "Please skill your " + firstlevel + " at Level 1 for your own." + qL + wL + eL + rL + sL);
+            else if(sL > 0) Drawing.DrawText(50, 10, System.Drawing.Color.White, "Please skill your " + firstlevel + " at Level 1 for your own." + qL + wL + eL + rL + sL);
             
         }
 
