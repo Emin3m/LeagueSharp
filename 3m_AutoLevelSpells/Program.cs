@@ -35,6 +35,10 @@ namespace AutoLevelSpell
     {
         public static Menu Menu;
 
+        public static int qL = Player.Spellbook.GetSpell(SpellSlot.Q).Level;
+        public static int wL = Player.Spellbook.GetSpell(SpellSlot.W).Level;
+        public static int eL = Player.Spellbook.GetSpell(SpellSlot.E).Level;
+        public static int rL = Player.Spellbook.GetSpell(SpellSlot.R).Level;
         public static int qOff = 0, wOff = 0, eOff = 0, rOff = 0;
         public static int[] seq = new int[18];
         public static int[] abilitySequence;
