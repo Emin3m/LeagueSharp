@@ -111,7 +111,7 @@ namespace AutoLevelSpell
 
         private static void Game_OnGameProcessPacket(EventArgs args)
         {
-            if (sL == 0) Drawing.OnDraw += Drawing_OnDraw;
+            Drawing.OnDraw += Drawing_OnDraw;
             TimeSpan time = TimeSpan.FromSeconds(Game.ClockTime);
             if (time.TotalSeconds > offset && first)
             {
