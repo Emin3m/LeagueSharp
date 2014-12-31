@@ -126,7 +126,8 @@ namespace AutoLevelSpell
             if (sL > 1 && first)
             {
                 first = false;
-                changeSeq(0);
+                //changeSeq(0);
+                Game.PrintChat("Kann losgehen");
             } 
             else Drawing.DrawText(50, 10, System.Drawing.Color.White, "Sample Text " + sL);
             
