@@ -43,9 +43,9 @@ namespace AutoLevelSpell
         public static int[] abilitySequence;
         private static SpellSlot Smite;
         public static Obj_AI_Base Player = ObjectManager.Player;
-        public static String tipo = "";
-        public static String champion = "";
-        public static String firstlevel = "";
+        public static string tipo = "";
+        public static string champion = "";
+        public static string firstlevel = "";
         public static Boolean first = true;
         
         
@@ -102,7 +102,7 @@ namespace AutoLevelSpell
             Menu.AddToMainMenu();
             seq = new[] { Menu.Item(champion + "Level1").GetValue<Slider>().Value, Menu.Item(champion + "Level2").GetValue<Slider>().Value, Menu.Item(champion + "Level3").GetValue<Slider>().Value, Menu.Item(champion + "Level4").GetValue<Slider>().Value, Menu.Item(champion + "Level5").GetValue<Slider>().Value, Menu.Item(champion + "Level6").GetValue<Slider>().Value, Menu.Item(champion + "Level7").GetValue<Slider>().Value, Menu.Item(champion + "Level8").GetValue<Slider>().Value, Menu.Item(champion + "Level9").GetValue<Slider>().Value, Menu.Item(champion + "Level10").GetValue<Slider>().Value, Menu.Item(champion + "Level11").GetValue<Slider>().Value, Menu.Item(champion + "Level12").GetValue<Slider>().Value, Menu.Item(champion + "Level13").GetValue<Slider>().Value, Menu.Item(champion + "Level14").GetValue<Slider>().Value, Menu.Item(champion + "Level15").GetValue<Slider>().Value, Menu.Item(champion + "Level16").GetValue<Slider>().Value, Menu.Item(champion + "Level17").GetValue<Slider>().Value, Menu.Item(champion + "Level18").GetValue<Slider>().Value };
             Game.PrintChat("[00:00] <font color='#C80046'>AutoLevelSpells by Emin3m loaded...</font>");
-            
+            Game.OnGameUpdate += Game_OnGameProcessPacket;
             
         }
 
