@@ -97,9 +97,6 @@ namespace AutoLevelSpell
             Menu.AddToMainMenu();
             seq = new[] { Menu.Item(champion + "Level1").GetValue<Slider>().Value, Menu.Item(champion + "Level2").GetValue<Slider>().Value, Menu.Item(champion + "Level3").GetValue<Slider>().Value, Menu.Item(champion + "Level4").GetValue<Slider>().Value, Menu.Item(champion + "Level5").GetValue<Slider>().Value, Menu.Item(champion + "Level6").GetValue<Slider>().Value, Menu.Item(champion + "Level7").GetValue<Slider>().Value, Menu.Item(champion + "Level8").GetValue<Slider>().Value, Menu.Item(champion + "Level9").GetValue<Slider>().Value, Menu.Item(champion + "Level10").GetValue<Slider>().Value, Menu.Item(champion + "Level11").GetValue<Slider>().Value, Menu.Item(champion + "Level12").GetValue<Slider>().Value, Menu.Item(champion + "Level13").GetValue<Slider>().Value, Menu.Item(champion + "Level14").GetValue<Slider>().Value, Menu.Item(champion + "Level15").GetValue<Slider>().Value, Menu.Item(champion + "Level16").GetValue<Slider>().Value, Menu.Item(champion + "Level17").GetValue<Slider>().Value, Menu.Item(champion + "Level18").GetValue<Slider>().Value };
             Game.PrintChat("[00:00] <font color='#C80046'>AutoLevelUp Spells by Emin3m loaded...</font>");
-            Game.PrintChat("[00:00] <font color='#C80046'>You have " + offset + " seconds time to change your settings for " + champion + "!</font>");
-            Game.PrintChat("[00:00] <font color='#C80046'>Note: 1 = Q - 2 = W - 3 = E - 4 = R.</font>");
-            Game.PrintChat("[00:00] <font color='#C80046'>Note: Wrong or impossible sequences are not catched!!!</font>");
             Game.OnGameProcessPacket += Game_OnGameProcessPacket;
             Drawing.OnDraw += Drawing_OnDraw;
             
@@ -123,13 +120,19 @@ namespace AutoLevelSpell
             int eL = Player.Spellbook.GetSpell(SpellSlot.E).Level;
             int rL = Player.Spellbook.GetSpell(SpellSlot.R).Level;
             int sL = qL + wL + eL + rL;
+            String firstlevel = "";
+
+            if(Menu.Item(champion + "Level1").GetValue<Slider>().Value == 1) firstlevel = "Q";
+            if(Menu.Item(champion + "Level1").GetValue<Slider>().Value == 1) firstlevel = "W";
+            if(Menu.Item(champion + "Level1").GetValue<Slider>().Value == 1) firstlevel = "E";
+            if(Menu.Item(champion + "Level1").GetValue<Slider>().Value == 1) firstlevel = "R";
+
             if (sL > 1 && first)
             {
                 first = false;
                 //changeSeq(0);
-                Game.PrintChat("Kann losgehen");
             }
-            else Drawing.DrawText(50, 10, System.Drawing.Color.White, "Sample Text " + qL + wL + eL + rL+sL);
+            else Drawing.DrawText(50, 10, System.Drawing.Color.White, "Please skill your " + firstlevel + " at Level 1 for your own." + qL + wL + eL + rL + sL);
             
         }
 
@@ -251,7 +254,6 @@ namespace AutoLevelSpell
             AutoLevel.Enabled(false);
             var level = new AutoLevel(seq);
             if (!first) AutoLevel.Enabled(Menu.Item(champion + "Enabled").GetValue<bool>());
-            if (num == 0) Game.PrintChat("[00:" + offset + "] <font color='#C80046'>AutoLevelUp Spells sequence " + champion + " loaded and starting now...</font>");            
         }
 
         public static void livellini()
